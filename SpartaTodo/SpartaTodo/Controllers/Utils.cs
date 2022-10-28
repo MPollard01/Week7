@@ -5,7 +5,7 @@ namespace SpartaTodo.Controllers
 {
     public static class Utils
     {
-        public static TodoViewModel TodoToViewModel(Todo todo) =>
+        public static TodoViewModel ToViewModel(Todo todo) =>
             new TodoViewModel
             {
                 Id = todo.Id,

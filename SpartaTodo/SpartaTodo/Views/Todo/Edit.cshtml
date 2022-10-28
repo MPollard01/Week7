@@ -1,12 +1,12 @@
-﻿@model SpartaTodo.Models.Todo
+﻿@model SpartaTodo.Models.ViewModels.TodoViewModel
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Edit Todo</h1>
 
-<h4>Todo</h4>
+<a class="btn btn-secondary" asp-action="Index">Back to List</a>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -33,15 +33,11 @@
                 <input asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-3">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -36,6 +36,6 @@ namespace SpartaTodo.Services
 
         public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
         
-        public EntityEntry<Todo> UpdateAsync(Todo entity) => _context.Update(entity);
+        public EntityEntry<Todo> Update(Todo entity) => _context.Update(entity);
     }
 }
