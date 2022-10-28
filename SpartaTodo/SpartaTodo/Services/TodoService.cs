@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using SpartaTodo.Data;
 using SpartaTodo.Models;
 
@@ -17,34 +18,24 @@ namespace SpartaTodo.Services
             _context = context;
         }
 
-        public bool Exists(int id)
+        public async Task<EntityEntry<Todo>> AddAsync(Todo entity) => await _context.Todos.AddAsync(entity);
+
+        public bool Exists(int id) => _context.Todos.Any(e => e.Id == id);
+
+        public async Task<Todo?> FindAsync(int id) => await _context.Todos.FindAsync(id);
+
+        public async Task<IEnumerable<Todo>> GetAllAsync() => await _context.Todos.ToListAsync();
+
+        public async Task<Todo?> GetAsync(int id) => await _context.Todos.FirstOrDefaultAsync(e => e.Id == id);
+
+        public async Task RemoveAsync(Todo entity)
         {
-            throw new NotImplementedException();
+            _context.Todos.Remove(entity);
+            await SaveChangesAsync();
         }
 
-        public Task<Todo?> FindAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Todo>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Todo?> GetAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task RemoveAsync(Todo entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<EntityEntry<Todo>> UpdateAsync(Todo entity)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
+        
+        public EntityEntry<Todo> UpdateAsync(Todo entity) => _context.Update(entity);
     }
 }
