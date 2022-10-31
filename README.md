@@ -41,7 +41,6 @@ What are Roles?
 Can a User have more than one Role?
 Can an anonymous user have a role?
 
-
 ## Service Lifetimes
 1. AddTransient
 - Transient lifetime services are created each time they are requested. This lifetime works best for lightweight, stateless services.
@@ -51,3 +50,17 @@ Can an anonymous user have a role?
 
 3. AddSingleton
 - Singleton lifetime services are created the first time they are requested (or when ConfigureServices is run if you specify an instance there) and then every subsequent request will use the same instance.
+
+## Data Binding
+- conversion of data comes with an HTTP request into endpoint parameters and/or Controller or PageModel properties
+
+## Authentication
+- authentication supports:
+  - User login
+  - new user registration
+  - password reset
+
+## Authorisation
+- a user can be assigned more than one role
+- endpoint attributes can specify which roles are authorised to access the endpoint
+- annonymous users cannot be assigned roles
