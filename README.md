@@ -41,3 +41,13 @@ What are Roles?
 Can a User have more than one Role?
 Can an anonymous user have a role?
 
+
+## Service Lifetimes
+1. AddTransient
+- Transient lifetime services are created each time they are requested. This lifetime works best for lightweight, stateless services.
+
+2. AddScoped
+- Scoped lifetime services are created once per request.
+
+3. AddSingleton
+- Singleton lifetime services are created the first time they are requested (or when ConfigureServices is run if you specify an instance there) and then every subsequent request will use the same instance.
